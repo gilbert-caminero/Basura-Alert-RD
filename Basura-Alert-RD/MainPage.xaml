@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Basura_Alert_RD.MainPage"
+             Title="Basura-Alert-RD"
+             BackgroundColor="#F4F6F8">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="25">
+
+            <!-- Encabezado -->
+            <Border BackgroundColor="#2E7D32" StrokeThickness="0" Padding="20" StrokeShape="RoundRectangle 15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="🚛 Basura-Alert-RD" FontSize="24" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                    <Label Text="Red de Alerta Comunitaria" FontSize="14" TextColor="#E8F5E9" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Sección de Alarma -->
+            <Border BackgroundColor="White" StrokeThickness="1" Stroke="#E0E0E0" Padding="20" StrokeShape="RoundRectangle 15">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="¿Viste el camión o servicio de limpieza?" FontSize="16" FontAttributes="Bold" TextColor="#333333" HorizontalTextAlignment="Center" />
+
+                    <Button Text="🔔 ¡Avisar al Barrio!"
+                            Command="{Binding ActivarAlarmaCommand}"
+                            BackgroundColor="#D32F2F" TextColor="White" FontSize="18" FontAttributes="Bold" HeightRequest="70" CornerRadius="15" />
+
+                    <Label Text="{Binding EstadoUltimaAlarma}" FontSize="14" TextColor="#555555" HorizontalTextAlignment="Center" FontAttributes="Italic" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Historial -->
+            <Label Text="Avisos Recientes en el Sector" FontSize="18" FontAttributes="Bold" TextColor="#1B5E20" Margin="5,10,0,0" />
+
+            <CollectionView ItemsSource="{Binding ListaAlertas}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White" Margin="0,5" Padding="15" StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                    <Label Text="{Binding Sector}" FontAttributes="Bold" TextColor="#212121" />
+                                    <Label Text="{Binding ReportadoPor, StringFormat='Reportado por: {0}'}" FontSize="12" TextColor="#757575" />
+                                </VerticalStackLayout>
+                                <Label Grid.Column="1" Text="{Binding HoraFormateada}" FontSize="14" FontAttributes="Bold" TextColor="#2E7D32" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
