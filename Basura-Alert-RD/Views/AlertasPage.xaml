@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Basura_Alert_RD.Views.AlertasPage"
+             Title="Alertas"
+             BackgroundColor="#F4F6F8">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <Label Text="Alertas de Recolección" FontSize="22" FontAttributes="Bold" TextColor="#2E7D32" />
+
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="🚛 Camión Cerca - Sector Central" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="El camión de la basura está a 2 calles de distancia." TextColor="#666666" />
+                    <Label Text="Hace 5 minutos" FontSize="11" TextColor="Gray" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

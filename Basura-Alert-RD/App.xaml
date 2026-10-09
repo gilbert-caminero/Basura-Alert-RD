@@ -1,14 +1,30 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Basura_Alert_RD"
-             x:Class="Basura_Alert_RD.App">
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-</Application>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Basura_Alert_RD.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Basura_Alert_RD.Views"
+    Title="Basura-Alert-RD">
+
+    <!-- Pantalla inicial de Login -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage"
+        Shell.FlyoutItemIsVisible="False"
+        Shell.TabBarIsVisible="False" />
+
+    <!-- Navegación por pestañas -->
+    <TabBar>
+        <Tab Title="Inicio" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:InicioPage}" Route="InicioPage" />
+        </Tab>
+        <Tab Title="Alertas" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:AlertasPage}" Route="AlertasPage" />
+        </Tab>
+        <Tab Title="Nuevo Aviso" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:CrearAlertaPage}" Route="CrearAlertaPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

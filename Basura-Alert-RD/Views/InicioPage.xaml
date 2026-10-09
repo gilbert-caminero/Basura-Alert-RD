@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Basura_Alert_RD.Views.InicioPage"
+             Title="Inicio"
+             BackgroundColor="#F4F6F8">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <!-- Banner Informativo -->
+            <Frame BackgroundColor="#2E7D32" CornerRadius="15" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="¡Hola, Vecino! 👋" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Mantén tu sector limpio y reporta los camiones de basura en tiempo real." TextColor="#E8F5E9" FontSize="13" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Acciones Rápidas" FontSize="16" FontAttributes="Bold" TextColor="#333333" />
+
+            <!-- Botones de Acción -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                <Button Grid.Column="0"
+                        Text="🔔 Crear Aviso"
+                        BackgroundColor="White"
+                        TextColor="#2E7D32"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="80"
+                        Clicked="OnCrearAvisoClicked" />
+
+                <Button Grid.Column="1"
+                        Text="📋 Ver Alertas"
+                        BackgroundColor="White"
+                        TextColor="#2E7D32"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="80"
+                        Clicked="OnVerAlertasClicked" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
