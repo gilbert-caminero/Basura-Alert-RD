@@ -1,14 +1,18 @@
 ﻿namespace Basura_Alert_RD;
 
-public partial class App : Application
+public class App : Application
 {
     public App()
     {
-        InitializeComponent();
     }
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        return new Window(new AppShell());
+        var window = new Window(new AppShell());
+
+        // Forzar a que la app inicie en la página de Login
+        Shell.Current?.GoToAsync("//LoginPage");
+
+        return window;
     }
 }

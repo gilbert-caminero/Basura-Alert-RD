@@ -2,17 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Basura_Alert_RD.Views.CrearAlertaPage"
-             Title="Nuevo Aviso"
+             Title="Crear Alerta"
              BackgroundColor="#F4F6F8">
 
-    <ScrollView Padding="20">
-        <VerticalStackLayout Spacing="15">
-            <Label Text="Reportar Recolección" FontSize="22" FontAttributes="Bold" TextColor="#2E7D32" />
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
 
-            <Entry Placeholder="Sector / Dirección" BackgroundColor="White" TextColor="Black" />
-            <Editor Placeholder="Descripción o detalles..." HeightRequest="100" BackgroundColor="White" TextColor="Black" />
+            <Label Text="Registrar Nueva Alerta"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#2E7D32" />
 
-            <Button Text="Publicar Alerta" BackgroundColor="#2E7D32" TextColor="White" FontAttributes="Bold" />
+            <Border BackgroundColor="White" StrokeShape="RoundRectangle 10" Padding="20">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="Sector Afectado" TextColor="#333333" FontAttributes="Bold" />
+
+                    <Entry x:Name="TxtSector"
+                           Placeholder="Ej. Palacio de Engombe"
+                           BackgroundColor="#FAFAFA"
+                           TextColor="Black"
+                           PlaceholderColor="Gray" />
+
+                    <Button Text="Guardar Alerta"
+                            BackgroundColor="#2E7D32"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="8"
+                            HeightRequest="45"
+                            Margin="0,10,0,0"
+                            Clicked="OnGuardarClicked" />
+
+                </VerticalStackLayout>
+            </Border>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
