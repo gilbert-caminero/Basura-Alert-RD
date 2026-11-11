@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Basura_Alert_RD.Views"
+    x:Class="Basura_Alert_RD.AppShell"
+    Shell.FlyoutBehavior="Disabled">
+
+    <!-- Pantalla de Login (Oculta del menú lateral) -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage"
+        FlyoutItemIsVisible="False" />
+
+    <!-- Opciones del menú lateral y de navegación general -->
+    <ShellContent
+        Title="Inicio"
+        ContentTemplate="{DataTemplate views:InicioPage}"
+        Route="InicioPage" />
+
+    <ShellContent
+        Title="Registros y Alertas"
+        ContentTemplate="{DataTemplate views:AlertasPage}"
+        Route="AlertasPage" />
+
+    <ShellContent
+        Title="Crear Alerta"
+        ContentTemplate="{DataTemplate views:CrearAlertaPage}"
+        Route="CrearAlertaPage" />
+
+    <ShellContent
+        Title="Crear Punto"
+        ContentTemplate="{DataTemplate views:CrearPuntoPage}"
+        Route="CrearPuntoPage" />
+
+    <!-- Botón de Cerrar Sesión fijo en el pie del menú lateral -->
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Button Text="🚪 Cerrar Sesión" 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type Shell}}, Path=CerrarSesionCommand}"
+                    BackgroundColor="#EF4444" 
+                    TextColor="White" 
+                    FontAttributes="Bold" 
+                    CornerRadius="10" 
+                    HeightRequest="45" />
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>

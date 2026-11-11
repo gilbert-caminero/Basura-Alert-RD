@@ -1,45 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Basura_Alert_RD.ViewModels"
              x:Class="Basura_Alert_RD.Views.InicioPage"
-             Title="Inicio"
-             BackgroundColor="#F4F6F8">
+             Title="Panel Principal"
+             BackgroundColor="#F8FAFC">
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="20">
+    <ContentPage.BindingContext>
+        <vm:InicioViewModel />
+    </ContentPage.BindingContext>
 
-            <!-- Banner Informativo -->
-            <Frame BackgroundColor="#2E7D32" CornerRadius="15" Padding="20" HasShadow="True">
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="¡Hola, Vecino! 👋" FontSize="20" FontAttributes="Bold" TextColor="White" />
-                    <Label Text="Mantén tu sector limpio y reporta los camiones de basura en tiempo real." TextColor="#E8F5E9" FontSize="13" />
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Banner / Encabezado de Bienvenida -->
+            <Frame BackgroundColor="#16A34A" CornerRadius="16" Padding="20" HasShadow="True" BorderColor="Transparent">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="👋 ¡Bienvenido a Basura-Alert-RD!" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Plataforma comunitaria para el reporte y gestión de residuos ecológicos." FontSize="13" TextColor="#DCFCE7" />
                 </VerticalStackLayout>
             </Frame>
 
-            <Label Text="Acciones Rápidas" FontSize="16" FontAttributes="Bold" TextColor="#333333" />
+            <Label Text="Acciones Rápidas" FontSize="16" FontAttributes="Bold" TextColor="#1E293B" Margin="0,5,0,0" />
 
-            <!-- Botones de Acción -->
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
-                <Button Grid.Column="0"
-                        Text="🔔 Crear Aviso"
-                        BackgroundColor="White"
-                        TextColor="#2E7D32"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        HeightRequest="80"
-                        Clicked="OnCrearAvisoClicked" />
+            <!-- Cuadrícula de Atajos Rápidos -->
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" ColumnSpacing="12" RowSpacing="12">
 
-                <Button Grid.Column="1"
-                        Text="📋 Ver Alertas"
-                        BackgroundColor="White"
-                        TextColor="#2E7D32"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        HeightRequest="80"
-                        Clicked="OnVerAlertasClicked" />
+                <!-- Atajo 1: Crear Alerta -->
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True" BorderColor="#CBD5E1">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrACrearAlertaCommand}" />
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="🚨" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="Crear Alerta" FontAttributes="Bold" FontSize="14" TextColor="#0F172A" HorizontalOptions="Center" />
+                        <Label Text="Reportar vertedero" FontSize="11" TextColor="#64748B" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Atajo 2: Crear Punto -->
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True" BorderColor="#CBD5E1">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrACrearPuntoCommand}" />
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="♻️" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="Crear Punto" FontAttributes="Bold" FontSize="14" TextColor="#0F172A" HorizontalOptions="Center" />
+                        <Label Text="Punto de reciclaje" FontSize="11" TextColor="#64748B" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Atajo 3: Ver Registros y Alertas -->
+                <Frame Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True" BorderColor="#CBD5E1">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrARegistrosCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="15" VerticalOptions="Center">
+                        <Label Grid.Column="0" Text="📋" FontSize="32" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="Ver Alertas y Puntos Registrados" FontAttributes="Bold" FontSize="14" TextColor="#0F172A" />
+                            <Label Text="Consulta el historial completo de reportes comunitarios" FontSize="11" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
             </Grid>
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

@@ -1,41 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Basura_Alert_RD.ViewModels"
              x:Class="Basura_Alert_RD.Views.CrearAlertaPage"
-             Title="Crear Alerta"
-             BackgroundColor="#F4F6F8">
+             Title="Crear Alerta">
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+    <ContentPage.BindingContext>
+        <vm:CrearAlertaViewModel />
+    </ContentPage.BindingContext>
 
-            <Label Text="Registrar Nueva Alerta"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   TextColor="#2E7D32" />
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
 
-            <Border BackgroundColor="White" StrokeShape="RoundRectangle 10" Padding="20">
-                <VerticalStackLayout Spacing="15">
+            <Label Text="Reportar Nueva Alerta" FontSize="22" FontAttributes="Bold" TextColor="#166534" />
 
-                    <Label Text="Sector Afectado" TextColor="#333333" FontAttributes="Bold" />
+            <!-- Campo Título -->
+            <Label Text="Título de la Alerta" FontAttributes="Bold" />
+            <Entry Placeholder="Ej. Acumulación de basura en la av. principal" Text="{Binding Titulo}" />
+            <Label Text="{Binding ErrorTitulo}" TextColor="Red" FontSize="12" IsVisible="{Binding TieneErrorTitulo}" />
 
-                    <Entry x:Name="TxtSector"
-                           Placeholder="Ej. Palacio de Engombe"
-                           BackgroundColor="#FAFAFA"
-                           TextColor="Black"
-                           PlaceholderColor="Gray" />
+            <!-- Campo Ubicación -->
+            <Label Text="Ubicación" FontAttributes="Bold" />
+            <Entry Placeholder="Ej. Calle Los Pinos, Engombe" Text="{Binding Ubicacion}" />
+            <Label Text="{Binding ErrorUbicacion}" TextColor="Red" FontSize="12" IsVisible="{Binding TieneErrorUbicacion}" />
 
-                    <Button Text="Guardar Alerta"
-                            BackgroundColor="#2E7D32"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            CornerRadius="8"
-                            HeightRequest="45"
-                            Margin="0,10,0,0"
-                            Clicked="OnGuardarClicked" />
+            <!-- Campo Descripción -->
+            <Label Text="Descripción" FontAttributes="Bold" />
+            <Editor Placeholder="Detalles de la situación..." HeightRequest="100" Text="{Binding Descripcion}" />
+            <Label Text="{Binding ErrorDescripcion}" TextColor="Red" FontSize="12" IsVisible="{Binding TieneErrorDescripcion}" />
 
-                </VerticalStackLayout>
-            </Border>
+            <!-- Botón Guardar -->
+            <Button Text="Guardar Alerta" 
+                    Command="{Binding GuardarAlertaCommand}" 
+                    BackgroundColor="#166534" 
+                    TextColor="White" 
+                    FontAttributes="Bold" 
+                    Margin="0,15,0,0" />
 
         </VerticalStackLayout>
     </ScrollView>

@@ -7,15 +7,18 @@ public partial class InicioPage : ContentPage
         InitializeComponent();
     }
 
-    private async void OnCrearAvisoClicked(object sender, EventArgs e)
+    private async void OnCrearAlertaClicked(object sender, EventArgs e)
     {
-        // Navega a la pestaña CrearAlertaPage
         await Shell.Current.GoToAsync("//CrearAlertaPage");
+    }
+
+    private async void OnCrearPuntoClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//CrearPuntoPage");
     }
 
     private async void OnVerAlertasClicked(object sender, EventArgs e)
     {
-        // Navega a la pestaña AlertasPage
         await Shell.Current.GoToAsync("//AlertasPage");
     }
 }

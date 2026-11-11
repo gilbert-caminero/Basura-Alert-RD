@@ -1,45 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Basura_Alert_RD.ViewModels"
              x:Class="Basura_Alert_RD.Views.LoginPage"
              Title="Iniciar Sesión"
-             Shell.FlyoutItemIsVisible="False"
-             Shell.TabBarIsVisible="False">
+             BackgroundColor="#F8FAFC">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+    <!-- Asignación explícita del BindingContext -->
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
 
-            <Image Source="dotnet_bot.png"
-                   HeightRequest="120"
-                   HorizontalOptions="Center" />
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="20" VerticalOptions="Center">
 
-            <Label Text="Basura-Alert-RD"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   TextColor="#1B5E20" />
+            <!-- Logo o Título -->
+            <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Label Text="♻️" FontSize="60" HorizontalOptions="Center" />
+                <Label Text="Basura-Alert-RD" FontSize="22" FontAttributes="Bold" TextColor="#1E293B" HorizontalOptions="Center" />
+            </VerticalStackLayout>
 
-            <Label Text="Inicia sesión para continuar"
-                   FontSize="14"
-                   HorizontalOptions="Center"
-                   TextColor="Gray" />
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="20" HasShadow="True" BorderColor="#CBD5E1">
+                <VerticalStackLayout Spacing="15">
 
-            <Entry x:Name="txtUsuario"
-                   Placeholder="Nombre de usuario"
-                   Keyboard="Text" />
+                    <!-- Campo Usuario -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Usuario" FontSize="14" FontAttributes="Bold" TextColor="#1E293B" />
+                        <Entry Text="{Binding Usuario}" 
+                               Placeholder="Ingresa tu usuario" 
+                               BackgroundColor="White" />
+                    </VerticalStackLayout>
 
-            <Entry x:Name="txtPassword"
-                   Placeholder="Contraseña"
-                   IsPassword="True" />
+                    <!-- Campo Contraseña -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Contraseña" FontSize="14" FontAttributes="Bold" TextColor="#1E293B" />
+                        <Entry Text="{Binding Contrasena}" 
+                               Placeholder="Ingresa tu contraseña" 
+                               IsPassword="True" 
+                               BackgroundColor="White" />
+                    </VerticalStackLayout>
 
-            <Button Text="Iniciar Sesión"
-                    Clicked="OnIniciarSesionClicked"
-                    BackgroundColor="#2E7D32"
-                    TextColor="White"
-                    CornerRadius="10"
-                    Margin="0,10,0,0" />
+                    <!-- Botón Iniciar Sesión -->
+                    <Button Text="Iniciar Sesión" 
+                            Command="{Binding IniciarSesionCommand}"
+                            BackgroundColor="#16A34A" 
+                            TextColor="White" 
+                            FontAttributes="Bold" 
+                            CornerRadius="10" 
+                            HeightRequest="48" 
+                            Margin="0,10,0,0" />
+
+                </VerticalStackLayout>
+            </Frame>
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

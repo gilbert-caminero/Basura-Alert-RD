@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Basura_Alert_RD.ViewModels"
+             x:Class="Basura_Alert_RD.Views.CrearPuntoPage"
+             Title="Registrar Punto de Reciclaje">
+
+    <ContentPage.BindingContext>
+        <vm:CrearPuntoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <Label Text="Crear Nuevo Punto de Reciclaje" FontSize="20" FontAttributes="Bold" TextColor="#166534" />
+
+            <Label Text="Nombre del Punto:" FontSize="13" TextColor="#64748B" />
+            <Entry Text="{Binding NombrePunto}" Placeholder="Ej: EcoPunto Central" />
+
+            <Label Text="Dirección / Ubicación:" FontSize="13" TextColor="#64748B" />
+            <Entry Text="{Binding Direccion}" Placeholder="Ej: Calle Principal #12" />
+
+            <Label Text="Horario:" FontSize="13" TextColor="#64748B" />
+            <Entry Text="{Binding Horario}" Placeholder="Ej: 8:00 AM - 5:00 PM" />
+
+            <Label Text="Tipo de Material:" FontSize="13" TextColor="#64748B" />
+            <Entry Text="{Binding TipoMaterial}" Placeholder="Ej: Plástico, Vidrio, Papel" />
+
+            <Button Text="Guardar y Registrar Punto" 
+                    BackgroundColor="#166534" 
+                    TextColor="White"
+                    HeightRequest="45"
+                    Margin="0,20,0,0"
+                    Command="{Binding GuardarPuntoCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

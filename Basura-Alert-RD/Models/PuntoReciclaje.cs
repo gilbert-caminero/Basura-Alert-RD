@@ -6,4 +6,7 @@ public class PuntoReciclaje
     public string NombrePunto { get; set; }
     public string Ubicacion { get; set; }
     public string Horario { get; set; }
+    public string Nombre { get; set; }
+    public string Direccion { get; set; }
+    public string TipoMaterial { get; set; }
 }
